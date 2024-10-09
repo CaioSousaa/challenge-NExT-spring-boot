@@ -1,0 +1,11 @@
+services:
+  mysql:
+    container_name: 'mysql-NExT'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=NExTDb'
+      - 'MYSQL_PASSWORD=mysql'
+      - 'MYSQL_ROOT_PASSWORD=mysql'
+      - 'MYSQL_USER=admin'
+    ports:
+      - '3306:3306'
