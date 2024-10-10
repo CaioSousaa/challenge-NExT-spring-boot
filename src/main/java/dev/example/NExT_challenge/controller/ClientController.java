@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController()
 @RequestMapping("/api/client")
 @AllArgsConstructor
@@ -25,6 +27,11 @@ public class ClientController {
 
     }
 
+
+    @GetMapping("/get-all")
+    public ResponseEntity<List<Client>> getAll() {
+        return ResponseEntity.ok(this.clientService.getAll());
+    }
 
 
 }
