@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -22,5 +23,10 @@ public class HouseController {
     @PostMapping("/{client_id}")
     public ResponseEntity<House> create(@Valid @PathVariable UUID client_id, @RequestBody HouseRequestDTO data) {
         return ResponseEntity.ok(this.houseService.createHouse(data, client_id));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<House>> getAll() {
+        return ResponseEntity.ok(this.houseService.getAllHouses());
     }
 }
