@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.example.NExT_challenge.domain.client.Client;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
-@Table(name = "_table")
+@Table(name = "_house")
 @Entity
 @Getter
 @Setter
@@ -21,12 +23,14 @@ public class House {
     private Long id;
 
     @NotBlank(message = "the zipcode field needs to be filled in")
+    @Length(max = 8, min = 8)
     private String zipcode;
 
     @NotBlank(message = "the location field needs to be filled in")
     private String location;
 
-    @NotBlank(message = "the ownership field needs to be filled in")
+    @NotNull(message = "The owner field cannot be null")
+    @Enumerated(EnumType.STRING)
     private OwnerShipStatus ownership;
 
     @ManyToOne
@@ -46,12 +50,12 @@ public class House {
             this.description = description;
         }
 
-        public String getDescription() {
-            return description;
-        }
-
         public int getCode() {
             return code;
+        }
+
+        public String getDescription() {
+            return description;
         }
     }
 }
