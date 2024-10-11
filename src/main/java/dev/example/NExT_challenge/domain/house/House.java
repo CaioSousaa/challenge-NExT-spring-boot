@@ -27,10 +27,31 @@ public class House {
     private String location;
 
     @NotBlank(message = "the ownership field needs to be filled in")
-    private String ownership;
+    private OwnerShipStatus ownership;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     @JsonIgnore
     private Client client;
+
+    public enum OwnerShipStatus {
+        OWNED(1, "Owned"),
+        MORTGAGED(2, "Mortgaged");
+
+        private final int code;
+        private final String description;
+
+        OwnerShipStatus(int code, String description) {
+            this.code = code;
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public int getCode() {
+            return code;
+        }
+    }
 }

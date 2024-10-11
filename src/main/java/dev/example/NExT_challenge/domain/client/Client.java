@@ -59,11 +59,8 @@ public class Client {
 
     public enum MaritalStatus {
         SINGLE(1, "Single"),
-        MARRIED(2, "Married"),
-        DIVORCED(3, "Divorced"),
-        WIDOWED(4, "Widowed"),
-        SEPARATED(5, "Separated"),
-        COMMON_LAW(6, "Common Law");
+        MARRIED(2, "Married");
+
 
         private final int code;
         private final String description;
