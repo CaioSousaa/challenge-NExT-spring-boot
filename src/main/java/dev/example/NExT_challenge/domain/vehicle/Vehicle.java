@@ -1,5 +1,6 @@
 package dev.example.NExT_challenge.domain.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.example.NExT_challenge.domain.client.Client;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -34,5 +35,6 @@ public class Vehicle {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     private Client client;
 }

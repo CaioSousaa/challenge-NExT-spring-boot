@@ -1,5 +1,6 @@
 package dev.example.NExT_challenge.domain.house;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.example.NExT_challenge.domain.client.Client;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -30,5 +31,6 @@ public class House {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     private Client client;
 }

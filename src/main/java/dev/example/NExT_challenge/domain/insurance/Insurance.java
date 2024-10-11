@@ -1,5 +1,6 @@
 package dev.example.NExT_challenge.domain.insurance;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.example.NExT_challenge.domain.client.Client;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,7 @@ public class Insurance {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     private Client client;
 
     public enum Type {
