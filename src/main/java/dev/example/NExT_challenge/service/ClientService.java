@@ -38,5 +38,14 @@ public class ClientService {
         return clientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Client not found with ID: " + id));
     }
+
+    public Client deleteUser(UUID id) {
+       Client client =  clientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Client not found with ID: " + id));
+
+       clientRepository.delete(client);
+
+       return client;
+    }
 }
 

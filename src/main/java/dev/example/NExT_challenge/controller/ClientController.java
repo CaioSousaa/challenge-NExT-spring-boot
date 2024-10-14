@@ -28,7 +28,6 @@ public class ClientController {
 
     }
 
-
     @GetMapping("/get-all")
     public ResponseEntity<List<Client>> getAll() {
         return ResponseEntity.ok(this.clientService.getAll());
@@ -38,5 +37,10 @@ public class ClientController {
     @GetMapping("/get/{id}")
     public ResponseEntity<Client> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.clientService.findById(id));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Client> deleteClient(@PathVariable UUID id) {
+        return ResponseEntity.ok(this.clientService.deleteUser(id));
     }
 }
