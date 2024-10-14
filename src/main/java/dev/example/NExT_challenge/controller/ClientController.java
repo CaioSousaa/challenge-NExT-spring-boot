@@ -2,6 +2,7 @@ package dev.example.NExT_challenge.controller;
 
 import dev.example.NExT_challenge.domain.client.Client;
 import dev.example.NExT_challenge.domain.client.ClientRequestDTO;
+import dev.example.NExT_challenge.domain.client.UpdateClientRequestDTO;
 import dev.example.NExT_challenge.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -42,5 +43,10 @@ public class ClientController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Client> deleteClient(@PathVariable UUID id) {
         return ResponseEntity.ok(this.clientService.deleteUser(id));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Client> updateUser(@PathVariable UUID id, @RequestBody UpdateClientRequestDTO dto) {
+        return ResponseEntity.ok(this.clientService.updateUser(id, dto));
     }
 }
