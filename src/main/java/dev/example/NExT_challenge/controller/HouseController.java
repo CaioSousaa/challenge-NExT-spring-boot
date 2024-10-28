@@ -2,6 +2,7 @@ package dev.example.NExT_challenge.controller;
 
 import dev.example.NExT_challenge.domain.house.House;
 import dev.example.NExT_challenge.domain.house.HouseRequestDTO;
+import dev.example.NExT_challenge.domain.house.UpdateHouseRequestDTO;
 import dev.example.NExT_challenge.service.HouseService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,11 @@ public class HouseController {
     @GetMapping("/all")
     public ResponseEntity<List<House>> getAll() {
         return ResponseEntity.ok(this.houseService.getAllHouses());
+    }
+
+    @PutMapping("/update_house/{house_id}")
+
+    public ResponseEntity<House> update(@PathVariable Long house_id, @RequestBody UpdateHouseRequestDTO data) {
+        return ResponseEntity.ok(this.houseService.updateHouse(data, house_id));
     }
 }

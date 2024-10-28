@@ -3,6 +3,7 @@ package dev.example.NExT_challenge.service;
 import dev.example.NExT_challenge.domain.client.Client;
 import dev.example.NExT_challenge.domain.house.House;
 import dev.example.NExT_challenge.domain.house.HouseRequestDTO;
+import dev.example.NExT_challenge.domain.house.UpdateHouseRequestDTO;
 import dev.example.NExT_challenge.repositories.ClientRepository;
 import dev.example.NExT_challenge.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,26 @@ public class HouseService {
 
     public List<House> getAllHouses() {
         return houseRepository.findAll();
+    }
+
+    public House updateHouse(UpdateHouseRequestDTO updateHouseRequestDTO, Long house_id ) {
+       House house = this.houseRepository.findById(house_id).orElseThrow();
+
+       if(updateHouseRequestDTO.client_id() == null) {
+           house.setClient(house.getClient());
+       } else {
+           Client client = this.clientRepository.findById(updateHouseRequestDTO.client_id()).orElseThrow();
+           house.setClient(client);
+       }
+
+       if(updateHouseRequestDTO.ownerShipStatus() == null) {
+           house.setOwnership(house.getOwnership());
+       } else {
+           house.setOwnership(updateHouseRequestDTO.ownerShipStatus());
+       }
+
+        this.houseRepository.save(house);
+
+       return house;
     }
 }
