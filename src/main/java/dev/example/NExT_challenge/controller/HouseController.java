@@ -32,8 +32,12 @@ public class HouseController {
     }
 
     @PutMapping("/update_house/{house_id}")
-
     public ResponseEntity<House> update(@PathVariable Long house_id, @RequestBody UpdateHouseRequestDTO data) {
         return ResponseEntity.ok(this.houseService.updateHouse(data, house_id));
+    }
+
+    @DeleteMapping("/delete/{house_id}")
+    public ResponseEntity<House> deleteHouse(@PathVariable Long house_id) {
+        return ResponseEntity.ok(this.houseService.deleteHouse(house_id));
     }
 }

@@ -60,4 +60,14 @@ public class HouseService {
 
        return house;
     }
+
+    public House deleteHouse(Long house_id) {
+       House house = this.houseRepository.findById(house_id)
+               .orElseThrow(() -> new RuntimeException("House not found with ID"));
+
+       this.houseRepository.delete(house);
+
+       return house;
+    }
+
 }
