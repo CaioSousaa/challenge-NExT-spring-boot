@@ -23,4 +23,9 @@ public class VehicleController {
     public ResponseEntity<Vehicle> create(@PathVariable UUID client_id, @RequestBody VehicleRequestDTO vehicleRequestDTO) {
         return ResponseEntity.ok(this.vehicleService.createVehicle(vehicleRequestDTO, client_id));
     }
+
+    @DeleteMapping("/delete/{vehicle_id}")
+        public ResponseEntity<Vehicle> deleteVehicle(@PathVariable Long vehicle_id) {
+        return ResponseEntity.ok(this.vehicleService.deleteVehicle(vehicle_id));
+    }
 }

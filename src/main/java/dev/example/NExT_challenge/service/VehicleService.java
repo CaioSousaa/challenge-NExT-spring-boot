@@ -34,4 +34,13 @@ public class VehicleService {
 
         return newVehicle;
     }
+
+    public Vehicle deleteVehicle(Long vehicle_id) {
+        Vehicle vehicle = this.vehicleRepository.findById(vehicle_id)
+                .orElseThrow(() -> new RuntimeException("Vehicle does not exist"));
+
+        this.vehicleRepository.delete(vehicle);
+
+        return vehicle;
+    }
 }
