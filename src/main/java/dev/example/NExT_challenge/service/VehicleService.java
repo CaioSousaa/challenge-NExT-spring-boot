@@ -1,6 +1,7 @@
 package dev.example.NExT_challenge.service;
 
 import dev.example.NExT_challenge.domain.client.Client;
+import dev.example.NExT_challenge.domain.vehicle.RequestUpdateVehicleDTO;
 import dev.example.NExT_challenge.domain.vehicle.Vehicle;
 import dev.example.NExT_challenge.domain.vehicle.VehicleRequestDTO;
 import dev.example.NExT_challenge.repositories.ClientRepository;
@@ -41,6 +42,20 @@ public class VehicleService {
 
         this.vehicleRepository.delete(vehicle);
 
+        return vehicle;
+    }
+
+    public Vehicle updateVehicle(Long vehicle_id, RequestUpdateVehicleDTO data) {
+        Vehicle vehicle = this.vehicleRepository.findById(vehicle_id).orElseThrow();
+
+        if(data.client_id() == null) {
+            vehicle.setClient(vehicle.getClient());
+        } else {
+            Client client = this.clientRepository.findById(data.client_id()).orElseThrow();
+            vehicle.setClient(client);
+        }
+
+        this.vehicleRepository.save(vehicle);
         return vehicle;
     }
 }

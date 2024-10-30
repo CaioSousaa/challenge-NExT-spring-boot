@@ -1,5 +1,6 @@
 package dev.example.NExT_challenge.controller;
 
+import dev.example.NExT_challenge.domain.vehicle.RequestUpdateVehicleDTO;
 import dev.example.NExT_challenge.domain.vehicle.Vehicle;
 import dev.example.NExT_challenge.domain.vehicle.VehicleRequestDTO;
 import dev.example.NExT_challenge.service.VehicleService;
@@ -27,5 +28,10 @@ public class VehicleController {
     @DeleteMapping("/delete/{vehicle_id}")
         public ResponseEntity<Vehicle> deleteVehicle(@PathVariable Long vehicle_id) {
         return ResponseEntity.ok(this.vehicleService.deleteVehicle(vehicle_id));
+    }
+
+    @PutMapping("/update/{vehicle_id}")
+        public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long vehicle_id, @RequestBody RequestUpdateVehicleDTO data) {
+            return ResponseEntity.ok(this.vehicleService.updateVehicle(vehicle_id, data));
     }
 }
