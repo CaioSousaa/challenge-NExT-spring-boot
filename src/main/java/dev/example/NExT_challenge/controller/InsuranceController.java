@@ -1,6 +1,7 @@
 package dev.example.NExT_challenge.controller;
 
 import dev.example.NExT_challenge.domain.insurance.Insurance;
+import dev.example.NExT_challenge.domain.insurance.RequestDisabilityPlanDTO;
 import dev.example.NExT_challenge.domain.insurance.RequestLifePlanDTO;
 import dev.example.NExT_challenge.service.InsuranceService;
 import lombok.AllArgsConstructor;
@@ -23,4 +24,10 @@ public class InsuranceController {
         return ResponseEntity.ok(this.insuranceService.createLifePlan(dto));
 
     }
+
+    @PostMapping("/disability")
+    public ResponseEntity<Insurance> createInsuranceDisability(@RequestBody RequestDisabilityPlanDTO dto) {
+        return ResponseEntity.ok(this.insuranceService.createDisabilityPlan(dto));
+    }
+
 }
