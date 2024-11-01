@@ -1,9 +1,6 @@
 package dev.example.NExT_challenge.controller;
 
-import dev.example.NExT_challenge.domain.insurance.Insurance;
-import dev.example.NExT_challenge.domain.insurance.RequestDisabilityPlanDTO;
-import dev.example.NExT_challenge.domain.insurance.RequestHousePlanDTO;
-import dev.example.NExT_challenge.domain.insurance.RequestLifePlanDTO;
+import dev.example.NExT_challenge.domain.insurance.*;
 import dev.example.NExT_challenge.service.InsuranceService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +33,8 @@ public class InsuranceController {
         return ResponseEntity.ok(this.insuranceService.createHousePlan(dto));
     }
 
+    @PostMapping("/auto")
+        public ResponseEntity<Insurance> createInsuranceAuto(@RequestBody InsuranceAutoDTO dto) {
+            return ResponseEntity.ok(this.insuranceService.createAutoPlan(dto));
+    }
 }
