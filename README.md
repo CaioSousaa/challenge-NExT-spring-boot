@@ -1,7 +1,7 @@
 ### NExT SEGUROS CHALLENGE
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://raichu-uploads.s3.amazonaws.com/logo_next-seguro-viagem_sNqhOH.png" width="400" alt="Brain-ag logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1qmW5pUL8I9nc-wNFc2EA2RWigKhaUtk6iQ&s" width="400" alt="Brain-ag logo" /></a>
 </p>
 
 ---
